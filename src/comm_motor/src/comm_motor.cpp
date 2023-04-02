@@ -26,6 +26,7 @@ void CllbckTimer40Hz(const ros::TimerEvent &event)
 {
     if (CommMotorRoutine() == -1)
         ros::shutdown();
+    write(rc, ctx, 1, speed);
 }
 
 //---> Node functions

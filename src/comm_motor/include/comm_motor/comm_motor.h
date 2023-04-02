@@ -19,6 +19,7 @@
 #include <string.h>
 #include <stdlib.h>
 
+#define NUM_REGISTER 2
 //---> Global variables
 ros::Timer timer_40Hz;
 
@@ -26,8 +27,8 @@ ros::Timer timer_40Hz;
 char key;
 modbus_t *ctx;
 uint16_t address = 0x0A02;
-int num_registers = 1;
-uint16_t registers[num_registers];
+
+uint16_t registers[NUM_REGISTER];
 int rc;
 int speed = 100;
 
