@@ -6,9 +6,9 @@
         "limitSymbolsToIncludedHeaders": false
       },
       "includePath": [
-        "/home/her/Documents/github/REMAKE_PROGRAM/install/iris/include/**",
         "/opt/ros/foxy/include/**",
-        "/usr/include/**"
+        "/usr/include/**",
+        "/home/her/Documents/ros_modbus/** "
       ],
       "name": "ROS",
       "intelliSenseMode": "gcc-x64",
