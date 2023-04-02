@@ -1,3 +1,0 @@
-<launch>
-    <node name="comm_motor" pkg="comm_motor" type="comm_motor" output="screen" respawn="true"/>
-</launch>

@@ -19,7 +19,7 @@
 #include <string.h>
 #include <stdlib.h>
 
-#define NUM_REGISTER 2
+#define NUM_REGISTER 1
 //---> Global variables
 ros::Timer timer_40Hz;
 

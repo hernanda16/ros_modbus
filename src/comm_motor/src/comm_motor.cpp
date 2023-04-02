@@ -26,7 +26,6 @@ void CllbckTimer40Hz(const ros::TimerEvent &event)
 {
     if (CommMotorRoutine() == -1)
         ros::shutdown();
-    write(rc, ctx, 1, speed);
 }
 
 //---> Node functions
@@ -37,7 +36,51 @@ int CommMotorInit()
 }
 
 int CommMotorRoutine()
-{
+{   
+    if(kbhit()){
+        char key = std::cin.get();
+        switch (key)
+        {
+        case '0':
+            write(rc, ctx, 0, speed);
+            break;
+        case 'p':
+            write(rc, ctx, 0, -speed);
+            break;
+        case '1':
+            write(rc, ctx, 1, speed);
+            break;
+        case '2':
+            write(rc, ctx, 2, speed);
+            break;
+        case '3':
+            write(rc, ctx, 3, speed);
+            break;
+        case 'q':
+            write(rc, ctx, 1, -speed);
+            break;
+        case 'w':
+            write(rc, ctx, 2, -speed);
+            break;
+        case 'e':
+            write(rc, ctx, 3, -speed);
+            break;
+        case ' ':
+            write(rc, ctx, 0, 0);
+            break;
+        case 'r':
+            read(rc, ctx, 1, address, NUM_REGISTER, registers);
+            read(rc, ctx, 2, address, NUM_REGISTER, registers);
+            read(rc, ctx, 3, address, NUM_REGISTER, registers);
+            printf("\n");
+            break;
+        
+        default:
+            break;
+        }
+    }
+
+    return 1;
 }
 
 int write(int rc, modbus_t *ctx, uint8_t slave_id, int speed)
@@ -66,8 +109,7 @@ int write(int rc, modbus_t *ctx, uint8_t slave_id, int speed)
     else
     {
         printf("Slave %d || Value %d written to register\n", slave_id, speed);
-        sleep(0.2);
-        printf("%d", speed);
+        sleep(0.1);
     }
     modbus_close(ctx);
     modbus_free(ctx);
