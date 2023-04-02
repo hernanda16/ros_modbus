@@ -8,7 +8,6 @@
       "includePath": [
         "/home/her/Documents/github/REMAKE_PROGRAM/install/iris/include/**",
         "/opt/ros/foxy/include/**",
-        "/home/her/Documents/ros_modbus/src/newmotor/include/**",
         "/usr/include/**"
       ],
       "name": "ROS",
