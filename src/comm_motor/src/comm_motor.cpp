@@ -85,7 +85,8 @@ int CommMotorRoutine()
 
 int write(int rc, modbus_t *ctx, uint8_t slave_id, int speed)
 {
-    ctx = modbus_new_rtu("/dev/ttyUSB0", 115200, 'N', 8, 1);
+     ctx = modbus_new_tcp("169.254.196.196", 8899);
+    // ctx = modbus_new_rtu("/dev/ttyUSB0", 115200, 'N', 8, 1);
     if (ctx == NULL)
     {
         fprintf(stderr, "Failed to create Modbus context: %s\n", modbus_strerror(errno));
@@ -100,7 +101,7 @@ int write(int rc, modbus_t *ctx, uint8_t slave_id, int speed)
         return -1;
     }
 
-    rc = modbus_write_register(ctx, 514, speed);
+    rc = modbus_write_register(ctx,514, speed);
     if (rc == -1)
     {
         fprintf(stderr, "Failed to write register: %s\n", modbus_strerror(errno));
@@ -118,7 +119,8 @@ int write(int rc, modbus_t *ctx, uint8_t slave_id, int speed)
 
 int read(int rc, modbus_t *ctx, uint8_t slave_id, uint16_t address, int num_registers, uint16_t *registers)
 {
-    ctx = modbus_new_rtu("/dev/ttyUSB0", 115200, 'N', 8, 1);
+     ctx = modbus_new_tcp("169.254.196.196", 8899);
+    // ctx = modbus_new_rtu("/dev/ttyUSB0", 115200, 'N', 8, 1);
     if (ctx == NULL)
     {
         fprintf(stderr, "Failed to create Modbus context: %s\n", modbus_strerror(errno));
